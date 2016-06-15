@@ -29,7 +29,7 @@ or
 
 `data-simple-accordion-toggle` when active add class `active` for custom style
 
-`data-simple-accordion-content="close"` hides all and displays the current
+`data-simple-accordion-content="close"` close all accordion and display to current
 
 
 Feel free to modify
