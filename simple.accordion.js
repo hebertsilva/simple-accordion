@@ -11,35 +11,35 @@
         this.accordionContent = $('[data-simple-accordion-content]', this.accordion);
         
         // event
-        this.accordionToggle.on('click', $.proxy(this, 'showAccordionHandler'));
+        this.accordionToggle.on('click', $.proxy(this, 'accordionHandler'));
     }
 
     SimpleAccordion.prototype = {
-        showAccordionHandler: function( event ) {
+        accordionHandler: function( event ) {
             event.preventDefault();
             var that = this,
                 target = $(event.currentTarget);
 
             if ( this.accordion.data('simple-accordion') === 'close' ) {
                 if ( target.parents(this.accordion).find(this.accordionContent).is(':visible') ) {
-                    this.showDefaultAccordion( target );
+                    this.showCurrentAccordion( target );
                 } else {
-                    this.hideAllAccordion( target );
+                    this.hideAllAccordion();
+                    this.showCurrentAccordion( target );
                 }
             } else {
-                this.showDefaultAccordion( target );
+                this.showCurrentAccordion( target );
             }
         },
 
-        showDefaultAccordion: function( target ) {
+        showCurrentAccordion: function( target ) {
             target.toggleClass('active');
             target.parents(this.accordion).find(this.accordionContent).stop().slideToggle('fast');
         },
 
-        hideAllAccordion: function( target ) {
+        hideAllAccordion: function() {
             this.accordionToggleAll.removeClass('active');
             this.accordionContentAll.stop().slideUp('fast');
-            this.showDefaultAccordion( target );
         }
     }
 
